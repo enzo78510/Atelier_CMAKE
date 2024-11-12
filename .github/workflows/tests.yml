@@ -56,10 +56,11 @@ jobs:
           cmake ..
           make
           ./src/calculator add 5 5  
-          Test_Mul:
+
+  Test_Sub:
             runs-on: ubuntu-latest
-              needs: Compilation
-              steps:
+            needs: Compilation
+  steps:
       - name: Test fonction add
         run: |
           last_directory=$(basename ${{ runner.workspace }})
@@ -70,7 +71,8 @@ jobs:
           cmake ..
           make
           ./src/calculator add 3 -2
-          Test_Mul:
+
+Test_car:
             runs-on: ubuntu-latest
               needs: Compilation
               steps:
