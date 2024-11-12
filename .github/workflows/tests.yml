@@ -11,6 +11,9 @@ jobs:
 
       - name: Compilation
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
           mkdir build
           cd build
           cmake ..
@@ -22,8 +25,11 @@ jobs:
     steps:
       - name: Exécuter le test addition
         run: |
-          cd build
-          ./src/calculator add 10 5
+            last_directory=$(basename ${{ runner.workspace }})
+            git clone https://github.com/${{ github.repository }}.git
+            cd ./$last_directory
+            cd build
+            ./src/calculator add 10 5
 
   Test_Div:
     runs-on: ubuntu-latest
@@ -31,8 +37,11 @@ jobs:
     steps:
       - name: Exécuter le test division
         run: |
-          cd build
-          ./src/calculator div 10 5 
+           last_directory=$(basename ${{ runner.workspace }})
+           git clone https://github.com/${{ github.repository }}.git
+           cd ./$last_directory
+           cd build
+           ./src/calculator div 10 5 
 
   Test_Mul:
     runs-on: ubuntu-latest
@@ -40,8 +49,11 @@ jobs:
     steps:
       - name: Exécuter le test multiplication
         run: |
-          cd build
-          ./src/calculator mul 10 5
+           last_directory=$(basename ${{ runner.workspace }})
+           git clone https://github.com/${{ github.repository }}.git
+           cd ./$last_directory
+           cd build
+           ./src/calculator mul 10 5
 
   Test_Sub:
     runs-on: ubuntu-latest
@@ -49,6 +61,9 @@ jobs:
     steps:
       - name: Exécuter le test soustraction
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
           cd build
           ./src/calculator sub 10 5
 
@@ -58,6 +73,9 @@ jobs:
     steps:
       - name: Exécuter le test carré
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
           cd build
           ./src/calculator car 10
 
@@ -70,6 +88,9 @@ jobs:
 
       - name: Compilation finale
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
           mkdir build
           cd build
           cmake ..
@@ -77,5 +98,8 @@ jobs:
 
       - name: Exécuter tous les tests finaux
         run: |
-          cd build
-          make test
+            last_directory=$(basename ${{ runner.workspace }})
+            git clone https://github.com/${{ github.repository }}.git
+            cd ./$last_directory
+            cd build
+            make test
